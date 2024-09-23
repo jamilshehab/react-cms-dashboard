@@ -1,4 +1,4 @@
- import { createRoot } from "react-dom/client";
+import { createRoot } from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -13,49 +13,49 @@ import Footer from "./components/footer/Footer";
 import Login from "./pages/login/Login";
 import './styles/globals.scss'
 function App() {
- const Layout = () => {
-  return (
-    <div className="main">
-    <Navbar/>
-    <div className="container">
-    <div className="menuContainer">
-      <Menu/>
-    </div>
-    <div className="contentContainer">
-      <Outlet/>
-    </div>
-    </div>
-    <Footer/>
-    </div>
-  )
- }
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout/>,
-  children:[
+  const Layout = () => {
+    return (
+      <div className="main">
+        <Navbar />
+        <div className="container">
+          <div className="menuContainer">
+            <Menu />
+          </div>
+          <div className="contentContainer">
+            <Outlet />
+          </div>
+        </div>
+        <Footer />
+      </div>
+    )
+  }
+  const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home/>,
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "users",
+          element: <Users />,
+        },
+        {
+          path: "products",
+          element: <Products />,
+        },
+
+      ],
     },
     {
-      path: "users",
-      element: <Users/>,
+      path: "/login",
+      element: <Login />,
     },
-    {
-      path: "products",
-      element: <Products/>,
-    },
-    
-  ],
-},
-{
-  path:"/login",
-  element:<Login/>,
-},
-]);
-  return  <RouterProvider router={router}/>;
-  
+  ]);
+  return <RouterProvider router={router} />;
+
 }
 
 export default App
