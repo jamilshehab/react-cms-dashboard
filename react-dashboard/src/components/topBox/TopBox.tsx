@@ -6,7 +6,7 @@ export const TopBox = () => {
     return (
         <div className='topBox'>
             <h1>Top Deals</h1>
-            <div className="list">
+            <div className="list list-styles">
                 {topDealUsers.map(user => (
                     <div className="listItem" key={user.id}>
                         <div className="user">
